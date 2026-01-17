@@ -1,11 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Trash2, ArrowRight } from 'lucide-react';
+import { Trash2, ArrowRight, Plus, Minus, ArrowLeft } from 'lucide-react';
 import useCartStore from '../store/useCartStore';
 
 import axios from 'axios';
 
 const CartPage = () => {
-	const { cartItems, removeItem, clearCart } = useCartStore();
+	const { cartItems, removeItem, clearCart, addItem, decrementItem } =
+		useCartStore();
 	const navigate = useNavigate();
 
 	const handleCheckout = async () => {
@@ -73,6 +74,13 @@ const CartPage = () => {
 
 	return (
 		<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12'>
+			<Link
+				to='/'
+				className='inline-flex items-center text-gray-500 hover:text-indigo-600 mb-8 transition-colors'
+			>
+				<ArrowLeft className='h-5 w-5 mr-2' />
+				Back to Shopping
+			</Link>
 			<h1 className='text-3xl font-bold text-gray-900 mb-8'>Shopping Cart</h1>
 
 			{cartItems.length === 0 ? (
@@ -115,7 +123,25 @@ const CartPage = () => {
 											</div>
 										</div>
 										<div className='flex flex-1 items-end justify-between text-sm'>
-											<p className='text-gray-500'>Qty {item.qty}</p>
+											<div className='flex items-center gap-3 bg-gray-50 rounded-lg px-3 py-1 border border-gray-200'>
+												<button
+													onClick={() => decrementItem(item._id)}
+													className='p-1 hover:bg-white hover:shadow-sm rounded transition-all disabled:opacity-50'
+													type='button'
+												>
+													<Minus className='h-4 w-4 text-gray-600' />
+												</button>
+												<span className='font-medium text-gray-900 w-4 text-center'>
+													{item.qty}
+												</span>
+												<button
+													onClick={() => addItem(item)}
+													className='p-1 hover:bg-white hover:shadow-sm rounded transition-all'
+													type='button'
+												>
+													<Plus className='h-4 w-4 text-gray-600' />
+												</button>
+											</div>
 
 											<div className='flex'>
 												<button

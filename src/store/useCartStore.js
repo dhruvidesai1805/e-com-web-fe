@@ -21,6 +21,23 @@ const useCartStore = create(
 						return { cartItems: [...state.cartItems, { ...product, qty: 1 }] };
 					}
 				}),
+			decrementItem: (id) =>
+				set((state) => {
+					const item = state.cartItems.find((x) => x._id === id);
+					if (item.qty === 1) {
+						toast.success(`${item.name} removed from cart`);
+						return {
+							cartItems: state.cartItems.filter((x) => x._id !== id),
+						};
+					} else {
+						toast.success(`${item.name} quantity updated!`);
+						return {
+							cartItems: state.cartItems.map((x) =>
+								x._id === id ? { ...x, qty: x.qty - 1 } : x,
+							),
+						};
+					}
+				}),
 			removeItem: (id) =>
 				set((state) => {
 					const item = state.cartItems.find((x) => x._id === id);

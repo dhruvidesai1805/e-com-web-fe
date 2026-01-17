@@ -46,7 +46,7 @@ const ProductPage = () => {
 
 			<div className='grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start'>
 				{/* Left: Product Image */}
-				<div className='sticky top-24'>
+				<div className=''>
 					<div className='aspect-square bg-white rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100 p-12 flex items-center justify-center group'>
 						<img
 							src={product.image}
