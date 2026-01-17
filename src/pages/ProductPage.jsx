@@ -92,31 +92,30 @@ const ProductPage = () => {
 								Key Features
 							</h3>
 							<ul className='grid grid-cols-1 gap-4'>
-								{product.features.map((feature, index) => (
-									<li
-										key={index}
-										className='flex items-start gap-3 group'
-									>
-										<div className='mt-1 bg-indigo-50 p-1 rounded-md group-hover:bg-indigo-600 transition-colors'>
-											<Check className='h-4 w-4 text-indigo-600 group-hover:text-white transition-colors' />
-										</div>
-										<span className='text-gray-700 font-medium'>{feature}</span>
-									</li>
-								))}
+								{Array.isArray(product.features) &&
+									product.features.map((feature, index) => (
+										<li
+											key={index}
+											className='flex items-start gap-3 group'
+										>
+											<div className='mt-1 bg-indigo-50 p-1 rounded-md group-hover:bg-indigo-600 transition-colors'>
+												<Check className='h-4 w-4 text-indigo-600 group-hover:text-white transition-colors' />
+											</div>
+											<span className='text-gray-700 font-medium'>{feature}</span>
+										</li>
+									))}
 							</ul>
 						</div>
 					)}
 
 					<div className='flex items-center gap-6 p-6 bg-gray-50 rounded-2xl border border-gray-100'>
 						<div
-							className={`flex items-center gap-2 ${
-								product.countInStock > 0 ? 'text-green-600' : 'text-red-600'
-							}`}
+							className={`flex items-center gap-2 ${product.countInStock > 0 ? 'text-green-600' : 'text-red-600'
+								}`}
 						>
 							<div
-								className={`h-3 w-3 rounded-full animate-pulse ${
-									product.countInStock > 0 ? 'bg-green-500' : 'bg-red-500'
-								}`}
+								className={`h-3 w-3 rounded-full animate-pulse ${product.countInStock > 0 ? 'bg-green-500' : 'bg-red-500'
+									}`}
 							/>
 							<span className='font-bold uppercase tracking-wider text-sm'>
 								{product.countInStock > 0

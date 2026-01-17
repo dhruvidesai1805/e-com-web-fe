@@ -9,7 +9,6 @@ export default defineConfig({
 			'/api': {
 				target: 'https://e-com-web-be.vercel.app',
 				changeOrigin: true,
-				secure: false,
 			},
 		},
 	},
