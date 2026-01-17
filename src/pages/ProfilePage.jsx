@@ -49,12 +49,6 @@ const ProfilePage = () => {
 								<Settings className='h-5 w-5' />
 								<span>Account Settings</span>
 							</button>
-							<div className='pt-4 mt-4 border-t border-gray-100'>
-								<button className='w-full flex items-center space-x-3 px-4 py-3 text-red-500 hover:bg-red-50 rounded-xl font-medium transition-colors'>
-									<LogOut className='h-5 w-5' />
-									<span>Sign Out</span>
-								</button>
-							</div>
 						</nav>
 					</div>
 				</aside>
